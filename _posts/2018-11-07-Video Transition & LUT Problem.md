@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Video Trasition & LUT Problems
+title:      Video Transition & LUT Problems
 subtitle:   
 date:       2018-11-08
 author:     Nino Lau
