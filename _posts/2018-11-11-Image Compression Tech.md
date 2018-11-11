@@ -347,7 +347,7 @@ If the input is a continuous-time analog signal, it needs to be sampled first so
 
 Applying one of these two processes, short-term redundancy (positive correlation of nearby values) of the signal is eliminated; compression ratios on the order of 2 to 4 can be achieved if differences are subsequently entropy coded, because the entropy of the difference signal is much smaller than that of the original discrete signal treated as independent samples.
 
-``` cpp
+``` c++
 // Tables and macro used to fully decode the DPCM differences.
 
 static const int s_extend_test[16] = { 0, 0x0001, 0x0002, 0x0004, 0x0008, 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000 };
