@@ -16,7 +16,7 @@ tags:
 
 经过一个月的鏖战，我人生的第一个 Dapp 做好了，取名叫 [ScoreChain](https://github.com/LovelyBuggies/Solidity_ScoreChain_Dapp) 。关于这个Dapp，您可以从 [Wiki](https://github.com/LovelyBuggies/Solidity_ScoreChain_Dapp/wiki) 获得这个项目的工程进度（~~虽然只有一个月的进度~~）。项目的使用请看 [README](https://github.com/LovelyBuggies/Solidity_ScoreChain_Dapp/blob/master/README.md)，这个文档主要是用来帮助大家熟悉这个Dapp的功能（~~当然功能很简单啦，大家都会用，主要是用来进行成果展示的啦；我很乐意分享我一个月的成果~~）。
 
-![logo](https://ws1.sinaimg.cn/bmiddle/006tNbRwgy1fyiakzb237j30uo0u075y.jpg)
+![logo](https://ws3.sinaimg.cn/large/006tNc79gy1fz3ucue48hj317q09wq3o.jpg)
 
 怎样运行项目，怎样打开小狐狸 MetaMask 🦊 啥的我就不说了，[README](https://github.com/LovelyBuggies/Solidity_ScoreChain_Dapp/blob/master/README.md) 和 [Wiki](https://github.com/LovelyBuggies/Solidity_ScoreChain_Dapp/wiki) 都写的很清楚了。故事就从 localhost:3000 之后讲起。。。
 
