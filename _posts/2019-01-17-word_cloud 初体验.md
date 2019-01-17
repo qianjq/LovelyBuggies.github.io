@@ -21,7 +21,7 @@ tags:
 
 - 用 Python 3 及其 IDE PyCharm 编写源代码
 - Anaconda 用来搭建环境
-- 一个抠图软件*（我用的“搞定抠图”）*
+- 一个抠图软件*（我用的“[搞定抠图](https://www.gaoding.com/)”）*
 
 
 
