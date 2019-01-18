@@ -147,7 +147,7 @@ $ conda install --channel https://conda.anaconda.org/conda-forge jieba
 
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fz9x00ehivj31i80u04hq.jpg)
 
-[有的解释](https://blog.csdn.net/Jancydc/article/details/84500912)说这是因为 Python 的版本问题，由于我已经被 Mac 自带的 Python 2 和 我下载的 Python 3 困扰多时， 我觉得不理它了，直接采用最丑陋但很简洁的办法，加两行代码在 `import matplotlib.pyplot as plt` 之前：
+[有的解释](https://blog.csdn.net/Jancydc/article/details/84500912)说这是因为 Python 的版本问题，由于我已经被 Mac 自带的 Python 2 和 我下载的 Python 3 困扰多时， 我决定不理它了，直接采用最丑陋但很简洁的办法，加两行代码在 `import matplotlib.pyplot as plt` 之前：
 
 
 ``` python
