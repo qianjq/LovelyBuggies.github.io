@@ -202,6 +202,7 @@ image_colors = ImageColorGenerator(Adele_coloring)
 plt.axis("off")
 plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
 plt.show()
+wc.to_file('show_English.png')
 ```
 
 结果还是很”漂亮“的——*Adele 看到我把她做成了大蘑菇估计得气死* 😅。。。
