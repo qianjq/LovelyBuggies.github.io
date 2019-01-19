@@ -227,6 +227,6 @@ plt.show()
 ![image](http://upload-images.jianshu.io/upload_images/3220531-0630445fdedd86bb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - 看起来人形状的效果真的不好，调了很多次字体大小和间隔都不是很好看，不如试试爱心形的。
-
 - 另外，汉字词云图用到了自然语义处理的 jieba ，这个还没有尝试，日后进行体验！
+- 一定要保存图片不然效果很模糊！
 
