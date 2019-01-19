@@ -12,7 +12,7 @@ tags:
 
 ---
 
-> 云图前两天看见朋友圈有人转了一个爬了自己的个性签名做了一个词云图，突然发现词云图确实是一个可以很好反应程序员艺术审美的好东西。另外，[在我之前看到的一个论文](https://www.researchgate.net/publication/324509423_Detecting_Ponzi_Schemes_on_Ethereum_Towards_Healthier_Blockchain_Technology)中插了一个词云。阿黛尔是我很喜欢的一个女歌手，在此做一个Adele 轮廓的词云图，未来也许能用来送礼或者给我的文章插图。
+>  在[word_cloud 初体验——制作 Adele 轮廓的词云图](https://www.jianshu.com/p/8634ff9c6fee)中，我成功地实现了英文词云（采用了原图色 mask 和按频率比重）。这次利用 jieba 和 wordcloud，将冰心的散文诗用词云表示了出来。
 
 
 
@@ -22,7 +22,7 @@ tags:
 
 - 用 Python 3 及其 IDE PyCharm 编写源代码
 - Anaconda 用来搭建环境
-- 一个抠图软件*（我用的“[搞定抠图](https://www.gaoding.com/)”）*
+- 一个抠图软件*（我用的“搞定抠图”）*
 
 
 
@@ -30,99 +30,17 @@ tags:
 
 完成这次实验还需要一些“原料”：
 
-- 从 Python [wordcloud 库](https://github.com/amueller/word_cloud) 下载的 [sample 代码](https://github.com/amueller/word_cloud/blob/master/examples/simple.py)
-- 网上找到 [Adele 图片](https://ws1.sinaimg.cn/large/006tNc79gy1fz9vn43m3xj31hn0u0kjl.jpg) 和 Wiki 上截取的 [Adele 简介](https://en.wikipedia.org/wiki/Adele)
-- 用到了 `os` `PIL` `numpy` `matplotlib` 等 Python 包
+- 从 Python [wordcloud 库](https://github.com/amueller/word_cloud) 下载的 [sample 代码](https://amueller.github.io/word_cloud/auto_examples/wordcloud_cn.html#sphx-glr-auto-examples-wordcloud-cn-py)
+- 网上找到 color 图片和冰心的散文诗节选
+- 除了用到了 `os` `PIL` `numpy` `matplotlib` 等 Python 包，还用到了自然语义处理的 `jieba` 包
 
 
 
 ### 环境
 
-搭建实验用到的环境：一个配置完备 `os` `PIL` `numpy` `matplotlib` 等 Python 包的 conda env。
+因为之前说过了英文环境的配置，中文环境的配置基本一样，只不过多了一个` jieba` 包。[“结巴”](https://pypi.org/project/jieba/)是一个强大的分词库，完美支持中文分词，分为三种模式：精确模式（默认）、全模式和搜索引擎模式。
 
-为什么要用 conda，用本机自带的 Python 和 pip 不就好了？
-
-conda 可以为我们创造独立的 Python 环境，也就是说我们可以运行多个 Python 虚拟机，每个虚拟机都有独立的功能。这样可以明确分工，但同时也会造成不同环境的包重复，带来了内存负担。Anyway，conda 当然有解决办法啦，**我们这里还是创建了 conda 的 WordCloud 环境作为我们这次的词云 Python 环境。**
-
-关于 anaconda 的安装，这里需要提醒一下：*一定要用清华镜像！一定要用清华镜像！一定要用清华镜像！因为 conda 官网的速度实在是特别慢，有时候要下载一天——镜像地址在[这里](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)，根据自己的系统下载镜像就好了。一路顺着走，就能成功安装了（注意安装路径）。*
-
-输入 conda 出现下列东西就成功了：
-
-```shell
-$ conda
-usage: conda [-h] [-V] command ...
-
-conda is a tool for managing and deploying applications, environments and packages.
-
-Options:
-
-positional arguments: ...
-```
-
-成功下好了 conda 创建我们实验需要的 WordCloud 环境。
-
-``` shell
-$ conda create -n WordCloud  # 创建环境
-$ conda activate WordCloud   # 激活环境
-$ conda install [packages]   # 下载包，这里需要下载的包有 os, PIL, multidict, numpy, matplotlib 等等（根据需要还有的要下载scipy、jieba等等）
-```
-
-装好了之后看看我们有哪些环境和包：
-
-``` shell
-$ conda env list
-# conda environments:
-#
-base                     /Users/nino/anaconda3
-WordCloud             *  /Users/nino/anaconda3/envs/WordCloud
-
-$ conda list
-# packages in environment at /Users/nino/anaconda3/envs/WordCloud:
-#
-# Name                    Version                   Build  Channel
-blas                      1.0                         mkl  
-ca-certificates           2018.03.07                    0  
-certifi                   2018.11.29               py36_0  
-cycler                    0.10.0           py36hfc81398_0  
-freetype                  2.9.1             h5a5313f_1004    conda-forge
-intel-openmp              2019.1                      144  
-jieba                     0.39                       py_1    conda-forge
-jpeg                      9c                h1de35cc_1001    conda-forge
-kiwisolver                1.0.1            py36h0a44026_0  
-libcxx                    7.0.0                h2d50403_2    conda-forge
-libffi                    3.2.1             h0a44026_1005    conda-forge
-libgfortran               3.0.1                h93005f0_2  
-libpng                    1.6.36            ha441bb4_1000    conda-forge
-libtiff                   4.0.10            h79f4b77_1001    conda-forge
-llvm-meta                 7.0.0                         0    conda-forge
-matplotlib                3.0.2            py36h54f8f79_0  
-mkl                       2019.1                      144  
-mkl_fft                   1.0.10           py36h470a237_1    conda-forge
-mkl_random                1.0.2                    py36_0    conda-forge
-multidict                 4.5.2            py36h1de35cc_0  
-ncurses                   6.1               h0a44026_1002    conda-forge
-numpy                     1.15.4           py36hacdab7b_0  
-numpy-base                1.15.4           py36h6575580_0  
-olefile                   0.46                       py_0    conda-forge
-openssl                   1.1.1a               h1de35cc_0  
-pillow                    5.4.1           py36hbddbef0_1000    conda-forge
-pip                       18.1                  py36_1000    conda-forge
-pyparsing                 2.3.0                    py36_0  
-python                    3.6.8                haf84260_0  
-python-dateutil           2.7.5                    py36_0  
-pytz                      2018.7                   py36_0  
-readline                  7.0               hcfe32e1_1001    conda-forge
-scipy                     1.1.0            py36h1410ff5_2  
-setuptools                40.6.3                   py36_0    conda-forge
-six                       1.12.0                   py36_0  
-sqlite                    3.26.0            h1765d9f_1000    conda-forge
-tk                        8.6.9             ha441bb4_1000    conda-forge
-tornado                   5.1.1            py36h1de35cc_0  
-wheel                     0.32.3                   py36_0    conda-forge
-wordcloud                 1.5.0           py36h1de35cc_1000    conda-forge
-xz                        5.2.4             h1de35cc_1001    conda-forge
-zlib                      1.2.11            h1de35cc_1004    conda-forge
-```
+#### 分词包
 
 ⚠️ jieba 属于第三方包，不能用 `conda install`直接下载，需要用一些特殊的方法。
 
@@ -134,15 +52,9 @@ $ anaconda show conda-forge/jieba
 $ conda install --channel https://conda.anaconda.org/conda-forge jieba
  ```
 
-打开 Pycharm，从偏好设置中打开 project interpreter，点击 `show all`：
-
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9wjqufyhj317z0u044z.jpg)
-
 找到我们刚才配置好的 `WordCloud 环境`，加入到 PyCharm。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9wpxwrueg30rw0j2qvb.gif)
-
-运行  [examples/simple.py](https://github.com/amueller/word_cloud/blob/master/examples/simple.py) ，如果成功运行则说明环境已经搭建好了。
+#### Python 版本
 
 当然你可能会遇到这个问题：导入其他库（如numpy，pandas），并跑了一些简单的程序都一切正常，唯独导入matplotlib 库的时候，不管怎样也画不了图。
 
@@ -159,74 +71,97 @@ mpl.use("TkAgg")
 问题解决了，现在可以真正设计我们的词云图了！
 
 
+
 ### 词云
 
-从 Wiki 上复制一段 Adele 的描述到 text.txt ，然后用抠图软件扣了背景，**弄成白色背景**（这个很重要），取名叫 Adele.png ：
+接下来我们就可以设计自己的词云了！复制冰心散文诗到 text_ch.txt，并抠图生成 heart.png 用作 mask。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9x0ma8f5j31hn0u0tjv.jpg)
+![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc0imh9gsj31kb0u0tim.jpg)
 
-运行以下代码：
+#### 问题一：汉化字体
 
-``` python
-from os import path
-from PIL import Image
-import numpy as np
-import matplotlib as mpl
-mpl.use("TkAgg")
-import matplotlib.pyplot as plt
-import os
+一开始出现了问题，发现**识别不了汉字——出现了一堆框框**：
+![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc00ffz1tj30je0g641h.jpg)
 
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+这时候需要从网上下载一些[汉化字体格式](https://github.com/adobe-fonts)*（比如simhei.ttf）*，然后在我们的代码中加入：
 
-# get data directory (using getcwd() is needed to support running example in generated IPython notebook)
-d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
-
-# Read the whole text.
-text = open(path.join(d, 'text.txt')).read()
-
-# read the mask / color image taken from
-# http://jirkavinse.deviantart.com/art/quot-Real-Life-quot-Alice-282261010
-Adele_coloring = np.array(Image.open(path.join(d, "Adele.png")))
-stopwords = set(STOPWORDS)
-stopwords.add("said")
-
-wc = WordCloud(background_color="white", max_words=2000, mask=Adele_coloring,
-               stopwords=stopwords, max_font_size=180, min_font_size=30, random_state=42)
-# generate word cloud
-wc.generate(text)
-
-# create coloring from image
-image_colors = ImageColorGenerator(Adele_coloring)
-
-# show
-plt.axis("off")
-plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
-plt.show()
+```python 
+# the font from github: https://github.com/adobe-fonts
+font = '/资源库/Fonts/Simhei.ttf'
+wc = WordCloud(font_path=font).generate(cut_text)
 ```
 
-结果还是很”漂亮“的——*Adele 看到我把她做成了大蘑菇估计得气死* 😅。。。
+这样就可以用汉化字体了！
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9x4yc898j30po0fojta.jpg)
+#### 问题二：句云→词云
 
-用另一个轮廓试了试：
+但是还有一个问题就是一开始生成的词云是句子，因为没有用到“结巴”分词包。
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fz9x6m5ugmj31ti0oiwix.jpg)
+![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc0g8i8loj31kb0u01dj.jpg)
 
-当然还有别的风格的词云图，考虑到我这里只是一个“初体验”，我就不多赘述了，可以去看 [amueller](https://github.com/amueller)[/word_cloud](/word_cloud) 或者 [API 文档](https://amueller.github.io/word_cloud/auto_examples/wordcloud_cn.html)，还有很多风格很好的 samples 呢！*p.s. 我最喜欢原图片色字色渐变*
+得到“句子云”的原因有2个：
 
-当然也有**命令行**工具，方便使用！
+- 没有使用 jieba.cut() 进行分词，txt 被直接用于 WordCloud.generate()
+- 使用了 jieba.cut() 但是没有用特殊符号使得分好词的句子又变成了原始 txt 格式，这时WordCloud.generate() 只能按标点符号得到“句子云”
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fz9x9e5xzxj30ee0g43zi.jpg)
+进行如下的分词操作处理：
 
+```python 
+# 分词
+d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+text = open(path.join(d, 'text_ch.txt')).read()
+cut_text = ' '.join(jieba.cut(text))
+j_text = jieba.cut(text)
+cut1_text = ''.join(jieba.cut(text))
 
+# 用分词做词云 cut_text
+wc = WordCloud(background_color="white", font_path=font).generate(cut_text)
+```
 
-### 感悟
+#### 成果
 
-为了讨女朋友欢心，我又做了一个她形状的关于 love lyrics 的词云图：
+通过运行下面这段代码，可以发现做出了完美的中文词云：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fz9xaouy85j30gg0mmjsf.jpg)
+```python 
+# -*- coding: utf-8 -*-
+from os import path
+import jieba
+from wordcloud import WordCloud
+import matplotlib as mpl
+import numpy as np
+from PIL import Image
+mpl.use("TkAgg")
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
-- 看起来人形状的效果真的不好，调了很多次字体大小和间隔都不是很好看，不如试试爱心形的。
+# 分词
+d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
+text = open(path.join(d, 'text_ch.txt')).read()
+cut_text = ' '.join(jieba.cut(text))
+j_text = jieba.cut(text)
+cut1_text = ''.join(jieba.cut(text))
 
-- 另外，汉字词云图用到了自然语义处理的 jieba ，这个还没有尝试，日后进行体验！
+# the font from github: https://github.com/adobe-fonts
+font = '/资源库/Fonts/Simhei.ttf'
+Heart_coloring = np.array(Image.open(path.join(d, "heart.png")))
+stopwords = set(STOPWORDS)
+stopwords.add("said")
+# 用分词做词云
+wc = WordCloud(background_color="white", collocations=False, font_path=font, width=4400, height=4400, margin=2, mask=Heart_coloring,
+                                    max_font_size=120, min_font_size=20).generate(cut_text)
+image_colors = ImageColorGenerator(Heart_coloring)
+plt.imshow(wc.recolor(color_func=image_colors), interpolation="bilinear")
+#plt.imshow(wc)
+plt.axis("off")
+plt.show()
 
+# 把词云保存下来
+wc.to_file('show_Chinese.png')  
+
+```
+
+最终的词云效果如图所示：
+
+![](https://ws3.sinaimg.cn/large/006tNc79gy1fzc0loluuuj31kb0u0wsc.jpg)
+
+美丽的词云就这样做好了！😄
