@@ -12,9 +12,9 @@ tags:
 
 ---
 
-> 云图前两天看见朋友圈有人转了一个爬了自己的个性签名做了一个词云图，突然发现词云图确实是一个可以很好反应程序员艺术审美的好东西。另外，[在我之前看到的一个论文](https://www.researchgate.net/publication/324509423_Detecting_Ponzi_Schemes_on_Ethereum_Towards_Healthier_Blockchain_Technology)中插了一个词云。阿黛尔是我很喜欢的一个女歌手，在此做一个Adele 轮廓的词云图，未来也许能用来送礼或者给我的文章插图。
+> 前两天看见朋友圈有人转了一个爬了自己的个性签名做了一个词云图，突然发现词云图确实是一个可以很好反应程序员艺术审美的好东西。另外，[在我之前看到的一个论文](https://www.researchgate.net/publication/324509423_Detecting_Ponzi_Schemes_on_Ethereum_Towards_Healthier_Blockchain_Technology)中插了一个词云。阿黛尔是我很喜欢的一个女歌手，在此做一个Adele 轮廓的词云图，未来也许能用来送礼或者给我的文章插图。
 
-
+![Adele](http://upload-images.jianshu.io/upload_images/3220531-a3fb50b353c37e0d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 工具
 
@@ -136,17 +136,17 @@ $ conda install --channel https://conda.anaconda.org/conda-forge jieba
 
 打开 Pycharm，从偏好设置中打开 project interpreter，点击 `show all`：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9wjqufyhj317z0u044z.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-7dcee9b8c0163c9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 找到我们刚才配置好的 `WordCloud 环境`，加入到 PyCharm。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9wpxwrueg30rw0j2qvb.gif)
+![image](http://upload-images.jianshu.io/upload_images/3220531-c91a8ccc906a8a3c.gif?imageMogr2/auto-orient/strip)
 
 运行  [examples/simple.py](https://github.com/amueller/word_cloud/blob/master/examples/simple.py) ，如果成功运行则说明环境已经搭建好了。
 
 当然你可能会遇到这个问题：导入其他库（如numpy，pandas），并跑了一些简单的程序都一切正常，唯独导入matplotlib 库的时候，不管怎样也画不了图。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fz9x00ehivj31i80u04hq.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-68a88e7fe6863d75.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 [有的解释](https://blog.csdn.net/Jancydc/article/details/84500912)说这是因为 Python 的版本问题，由于我已经被 Mac 自带的 Python 2 和 我下载的 Python 3 困扰多时， 我决定不理它了，直接采用最丑陋但很简洁的办法，加两行代码在 `import matplotlib.pyplot as plt` 之前：
 
@@ -163,7 +163,7 @@ mpl.use("TkAgg")
 
 从 Wiki 上复制一段 Adele 的描述到 text.txt ，然后用抠图软件扣了背景，**弄成白色背景**（这个很重要），取名叫 Adele.png ：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9x0ma8f5j31hn0u0tjv.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-64606a00541d605a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 运行以下代码：
 
@@ -206,17 +206,17 @@ plt.show()
 
 结果还是很”漂亮“的——*Adele 看到我把她做成了大蘑菇估计得气死* 😅。。。
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fz9x4yc898j30po0fojta.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-f4d4fe3af6281a1c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 用另一个轮廓试了试：
 
-![](https://ws2.sinaimg.cn/large/006tNc79gy1fz9x6m5ugmj31ti0oiwix.jpg)
+![Adele](http://upload-images.jianshu.io/upload_images/3220531-0631e02693e4724e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 当然还有别的风格的词云图，考虑到我这里只是一个“初体验”，我就不多赘述了，可以去看 [amueller](https://github.com/amueller)[/word_cloud](/word_cloud) 或者 [API 文档](https://amueller.github.io/word_cloud/auto_examples/wordcloud_cn.html)，还有很多风格很好的 samples 呢！*p.s. 我最喜欢原图片色字色渐变*
 
 当然也有**命令行**工具，方便使用！
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fz9x9e5xzxj30ee0g43zi.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-2155a091a3f17fe7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
@@ -224,7 +224,7 @@ plt.show()
 
 为了讨女朋友欢心，我又做了一个她形状的关于 love lyrics 的词云图：
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fz9xaouy85j30gg0mmjsf.jpg)
+![image](http://upload-images.jianshu.io/upload_images/3220531-0630445fdedd86bb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - 看起来人形状的效果真的不好，调了很多次字体大小和间隔都不是很好看，不如试试爱心形的。
 
