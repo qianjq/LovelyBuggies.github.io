@@ -12,7 +12,7 @@ tags:
 
 ---
 
->  在[word_cloud 初体验——制作 Adele 轮廓的词云图](https://www.jianshu.com/p/8634ff9c6fee)中，我成功地实现了英文词云（采用了原图色 mask 和按频率比重）。这次利用 jieba 和 wordcloud，将冰心的散文诗用词云表示了出来。
+>  在[word_cloud 初体验](https://lovelybuggies.github.io/2019/01/17/word_cloud-%E5%88%9D%E4%BD%93%E9%AA%8C/)中，我成功地实现了英文词云（采用了原图色 mask 和按频率比重）。这次利用 jieba 和 wordcloud，将冰心的散文诗用词云表示了出来。
 
 ![WordCloud_Chinese](http://upload-images.jianshu.io/upload_images/3220531-98db43ac2bdbbe3b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
