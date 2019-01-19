@@ -14,7 +14,7 @@ tags:
 
 >  在[word_cloud 初体验——制作 Adele 轮廓的词云图](https://www.jianshu.com/p/8634ff9c6fee)中，我成功地实现了英文词云（采用了原图色 mask 和按频率比重）。这次利用 jieba 和 wordcloud，将冰心的散文诗用词云表示了出来。
 
-
+![WordCloud_Chinese](http://upload-images.jianshu.io/upload_images/3220531-98db43ac2bdbbe3b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 工具
 
@@ -58,7 +58,7 @@ $ conda install --channel https://conda.anaconda.org/conda-forge jieba
 
 当然你可能会遇到这个问题：导入其他库（如numpy，pandas），并跑了一些简单的程序都一切正常，唯独导入matplotlib 库的时候，不管怎样也画不了图。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fz9x00ehivj31i80u04hq.jpg)
+![NSInvalidArgumentException](http://upload-images.jianshu.io/upload_images/3220531-03dfe995437cc58f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 [有的解释](https://blog.csdn.net/Jancydc/article/details/84500912)说这是因为 Python 的版本问题，由于我已经被 Mac 自带的 Python 2 和 我下载的 Python 3 困扰多时， 我决定不理它了，直接采用最丑陋但很简洁的办法，加两行代码在 `import matplotlib.pyplot as plt` 之前：
 
@@ -76,12 +76,12 @@ mpl.use("TkAgg")
 
 接下来我们就可以设计自己的词云了！复制冰心散文诗到 text_ch.txt，并抠图生成 heart.png 用作 mask。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc0imh9gsj31kb0u0tim.jpg)
+![Mask](http://upload-images.jianshu.io/upload_images/3220531-4e7643400ba67b66.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 问题一：汉化字体
 
 一开始出现了问题，发现**识别不了汉字——出现了一堆框框**：
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc00ffz1tj30je0g641h.jpg)
+![Font Disabled](http://upload-images.jianshu.io/upload_images/3220531-d030cde0d8b888f1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 这时候需要从网上下载一些[汉化字体格式](https://github.com/adobe-fonts)*（比如simhei.ttf）*，然后在我们的代码中加入：
 
@@ -97,7 +97,7 @@ wc = WordCloud(font_path=font).generate(cut_text)
 
 但是还有一个问题就是一开始生成的词云是句子，因为没有用到“结巴”分词包。
 
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fzc0g8i8loj31kb0u01dj.jpg)
+![SentensesCloud](http://upload-images.jianshu.io/upload_images/3220531-77abd601a6cded0d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 得到“句子云”的原因有2个：
 
@@ -162,6 +162,6 @@ wc.to_file('show_Chinese.png')
 
 最终的词云效果如图所示：
 
-![](https://ws3.sinaimg.cn/large/006tNc79gy1fzc0loluuuj31kb0u0wsc.jpg)
+![WordCloud_Chinese](http://upload-images.jianshu.io/upload_images/3220531-98db43ac2bdbbe3b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 美丽的词云就这样做好了！😄
