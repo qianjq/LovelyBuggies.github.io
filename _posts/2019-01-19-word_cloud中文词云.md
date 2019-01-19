@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      word_cloud 初体验
-subtitle:   制作 Adele 轮廓的词云图
-date:       2019-01-17
+title:      word_cloud 中文词云
+subtitle:   制作冰心散文诗词云
+date:       2019-01-19
 author:     Nino Lau
-header-img: img/tag-bg.jpg
+header-img: img/post-bg-swift.jpg
 catalog: true
 tags:
     - 实验
