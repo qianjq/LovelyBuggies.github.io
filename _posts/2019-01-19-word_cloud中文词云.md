@@ -170,4 +170,6 @@ wc.to_file('show_Chinese.png')
 
 ### 其他工具
 
-值得一提的是，[WordArt](https://wordart.com/) 这款工具也有词云的处理功能。
+值得一提的是，[WordArt](https://wordart.com/) 这款工具也有词云的处理功能。和python的wordcloud相比，这款处理软件的优点在于：可以对个别词调整字体和颜色；有更美观的处理效果；也具有汉化字体的处理。但是，下载高清版是要收费的，而且价格不菲。逢19年春节之际，我用这个软件处理的词云给大家拜个早年！
+
+![](https://ws3.sinaimg.cn/large/006tNc79ly1fzpwirzm05j30u00yi120.jpg)
