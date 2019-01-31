@@ -165,3 +165,9 @@ wc.to_file('show_Chinese.png')
 ![WordCloud_Chinese](http://upload-images.jianshu.io/upload_images/3220531-98db43ac2bdbbe3b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 美丽的词云就这样做好了！😄
+
+
+
+### 其他工具
+
+值得一提的是，[WordArt](https://wordart.com/) 这款工具也有词云的处理功能。
